@@ -1,39 +1,50 @@
+# Définition du style des étiquettes (Label) dans le fichier kv
 <label>:
-     font_name: 'Roboto'
-     font_size: 60
-     markup: True
+    font_name: 'Roboto'  # Utilisation de la police Roboto
+    font_size: 60        # Taille de la police
+    markup: True         # Activation du balisage Kivy Markup
+
+# Définition d'un bouton personnalisé (RobotoButton) dans le fichier kv
 <RobotoButton@Button>:
-     background_normal: 'btn_down.png'
-     background_down: 'btn_down.png'
-     border: (2, 2, 2, 2)
-     font_name: 'Roboto'
-     font_size: 25
-     bold: True
+    background_normal: 'btn_down.png'   # Image de fond en état normal
+    background_down: 'btn_down.png'     # Image de fond en état enfoncé
+    border: (2, 2, 2, 2)                # Spécification de la bordure
+    font_name: 'Roboto'                  # Utilisation de la police Roboto
+    font_size: 25                        # Taille de la police
+    bold: True                           # Texte en gras
 
+# Définition de la disposition principale de l'interface utilisateur
 BoxLayout:
-     orientation: 'vertical'
+    orientation: 'vertical'  # La disposition est verticale
 
-     Label:
-          id: time
-          text: '[b]00[/b]:00:00'
-     BoxLayout:
-          height: 90
-          orientation: 'horizontal'
-          padding: 20
-          spacing: 20
-          size_hint: (1, 0)
+    # Première étiquette pour afficher l'heure actuelle
+    Label:
+        id: time            # Identifiant pour référencer cet élément depuis le code Python
+        text: '[b]00[/b]:00:00'  # Texte initial formaté avec balisage Kivy Markup
 
-          RobotoButton:
-               id: start_stop
-               text: 'Start'
-               on_press: app.start_stop()
+    # Deuxième partie de l'interface avec deux boutons
+    BoxLayout:
+        height: 90           # Hauteur de cette partie
+        orientation: 'horizontal'  # La disposition des widgets est horizontale
+        padding: 20          # Espacement intérieur
+        spacing: 20          # Espacement entre les widgets
+        size_hint: (1, 0)    # La partie prend toute la largeur et une hauteur proportionnelle à son contenu
 
-          RobotoButton:
-               id: reset
-               text: 'Reset'
-               background_normal: 'red_btn_normal.png'
-               background_down: 'red_btn_down.png'
-               on_press: app.reset()
-     Label:
-          id: stopwatch
-          text: '00:00.[size=40]00[/size]'
+        # Premier bouton pour démarrer/arrêter le chronomètre
+        RobotoButton:
+            id: start_stop   # Identifiant pour référencer cet élément depuis le code Python
+            text: 'Start'    # Texte initial du bouton
+            on_press: app.start_stop()  # Action à effectuer lorsqu'on appuie sur le bouton
+
+        # Deuxième bouton pour réinitialiser le chronomètre
+        RobotoButton:
+            id: reset        # Identifiant pour référencer cet élément depuis le code Python
+            text: 'Reset'    # Texte initial du bouton
+            background_normal: 'red_btn_normal.png'  # Image de fond en état normal
+            background_down: 'red_btn_down.png'      # Image de fond en état enfoncé
+            on_press: app.reset()  # Action à effectuer lorsqu'on appuie sur le bouton
+
+    # Troisième étiquette pour afficher le temps du chronomètre
+    Label:
+        id: stopwatch       # Identifiant pour référencer cet élément depuis le code Python
+        text: '00:00.[size=40]00[/size]'  # Texte initial formaté avec balisage Kivy Markup
